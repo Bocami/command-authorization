@@ -3,7 +3,7 @@
 namespace Bocami.Practices.Command.Authorization
 {
     public class NullCommandAuthorizer<TCommand> : NullAuthorizer<TCommand>, ICommandAuthorizer<TCommand> 
-        where TCommand : class, ICommand
+        where TCommand : ICommand
     {
     }
 }

@@ -4,7 +4,7 @@ using Bocami.Practices.Decorator;
 namespace Bocami.Practices.Command.Authorization
 {
     public class AuthorizationCommandHandlerDecorator<TCommand> : ICommandHandler<TCommand>, IDecorator<ICommandHandler<TCommand>>
-            where TCommand : class, ICommand
+            where TCommand : ICommand
     {
         private readonly ICommandHandler<TCommand> commandHandler;
         private readonly ICommandAuthorizer<TCommand> commandAuthorizer;
