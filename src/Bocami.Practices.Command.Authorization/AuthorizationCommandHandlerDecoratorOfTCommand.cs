@@ -3,13 +3,13 @@ using Bocami.Practices.Decorator;
 
 namespace Bocami.Practices.Command.Authorization
 {
-    public abstract class AuthorizationCommandHandlerDecorator<TCommand> : ICommandHandler<TCommand>, IDecorator<ICommandHandler<TCommand>>
+    public class AuthorizationCommandHandlerDecorator<TCommand> : ICommandHandler<TCommand>, IDecorator<ICommandHandler<TCommand>>
             where TCommand : class, ICommand
     {
         private readonly ICommandHandler<TCommand> commandHandler;
         private readonly ICommandAuthorizer<TCommand> commandAuthorizer;
 
-        protected AuthorizationCommandHandlerDecorator(ICommandHandler<TCommand> commandHandler, ICommandAuthorizer<TCommand> commandAuthorizer)
+        public AuthorizationCommandHandlerDecorator(ICommandHandler<TCommand> commandHandler, ICommandAuthorizer<TCommand> commandAuthorizer)
         {
             if (commandHandler == null)
                 throw new ArgumentNullException("commandHandler");
