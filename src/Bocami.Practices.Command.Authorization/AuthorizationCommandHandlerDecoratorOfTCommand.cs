@@ -1,4 +1,5 @@
-﻿using Bocami.Practices.DecoratorPattern;
+﻿using System;
+using Bocami.Practices.Decorator;
 
 namespace Bocami.Practices.Command.Authorization
 {
@@ -10,6 +11,12 @@ namespace Bocami.Practices.Command.Authorization
 
         protected AuthorizationCommandHandlerDecorator(ICommandHandler<TCommand> commandHandler, ICommandAuthorizer<TCommand> commandAuthorizer)
         {
+            if (commandHandler == null)
+                throw new ArgumentNullException("commandHandler");
+
+            if (commandAuthorizer == null)
+                throw new ArgumentNullException("commandAuthorizer");
+
             this.commandHandler = commandHandler;
             this.commandAuthorizer = commandAuthorizer;
         }
